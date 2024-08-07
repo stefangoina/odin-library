@@ -9,16 +9,43 @@
   <body>
     <h1>Library</h1>
     <div class="box">
-      <div class="add-book">
-        <p>Add Book</p>
-        <form action="get">
-          <label for="nume">Book Title</label>
-          <input type="text" id="nume" />
-        </form>
-      </div>
       <div class="cards">
+        <div class="card add">
+          <dialog id="dialog">
+            <form method="dialog">
+              <label for="title">Book Title</label>
+              <input
+                type="text"
+                required
+                maxlength="30"
+                minlength="5"
+                placeholder="Meditations"
+                id="title"
+              />
+              <label for="author">Author</label>
+              <input
+                type="text"
+                required
+                maxlength="30"
+                minlength="5"
+                placeholder="Marcus Aurelius"
+                id="author"
+              />
+              <label for="pages">No. of Pages</label>
+              <input type="number" min="1" max="4000" id="pages" />
+              <label for="isread">Check if you have read it</label>
+              <input type="checkbox" id="isread" />
+              <div class="close-btn">
+                <input type="submit" id="js-close" value="CLOSE" />
+                <button type="reset">RESET</button>
+              </div>
+            </form>
+          </dialog>
+          <button id="show-dialog">Add Book</button>
+        </div>
         <div class="card"></div>
       </div>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
