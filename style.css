@@ -81,7 +81,8 @@ input[type="checkbox"] {
   margin-right: auto;
 }
 #js-close,
-button[type="reset"] {
+button[type="reset"],
+button[type="submit"] {
   padding: 18px;
   font-size: 1.8rem;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -96,4 +97,7 @@ input[type="text"],
 input[type="number"] {
   height: 30px;
   font-size: 1.7rem;
+}
+.card {
+  border: 2px dotted black;
 }

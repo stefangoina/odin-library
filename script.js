@@ -21,12 +21,14 @@ let submitBtn = document.getElementById("submit-book");
 // storage and constructor
 
 const library = [];
-
+let bookCount = 0;
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
   this.read = read;
+  this.index = bookCount;
+  bookCount++;
 }
 
 // build book from html input
@@ -39,8 +41,46 @@ submitBtn.addEventListener("click", () => {
   );
 
   library.push(newBook);
-  dialog.reset();
+  displayBooks();
   console.log(library);
+
+  //reset form and close it
+  bookTitle.value = "";
+  bookAuthor.value = "";
+  numberPages.value = "";
+  isRead.checked = false;
+  dialog.close();
 });
 
-function addToLibrary() {}
+//displaying the books
+function displayBooks() {
+  let cardsContainer = document.querySelector(".cards");
+  let addBookDiv = document.querySelector(".add");
+
+  cardsContainer.innerHTML = "";
+  if (addBookDiv) {
+    cardsContainer.appendChild(addBookDiv);
+  }
+  library.forEach((book) => {
+    let card = document.createElement("div");
+    card.classList.add("card");
+
+    let author = document.createElement("p");
+    author.textContent = `Author: ${book.author}`;
+    card.appendChild(author);
+
+    let title = document.createElement("p");
+    title.textContent = `Title: ${book.title}`;
+    card.appendChild(title);
+
+    let pages = document.createElement("p");
+    pages.textContent = `Pages: ${book.pages}`;
+    card.appendChild(pages);
+
+    let read = document.createElement("p");
+    read.textContent = `Read: ${book.read}`;
+    card.appendChild(read);
+
+    cardsContainer.appendChild(card);
+  });
+}
