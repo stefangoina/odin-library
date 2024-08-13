@@ -121,3 +121,9 @@ input[type="number"] {
   box-shadow: 1px 1px 5px rgba(0, 0, 0);
   border: 0;
 }
+.card > button:hover {
+  background-color: rgb(165, 97, 49);
+  color: white;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease-in-out;
+}
