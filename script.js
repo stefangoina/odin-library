@@ -81,11 +81,24 @@ function displayBooks() {
     read.textContent = `Read: ${book.read}`;
     card.appendChild(read);
 
-    cardsContainer.appendChild(card);
+    // toggle read button
+    let readBtn = document.createElement("button");
+    readBtn.textContent = "Toggle Read";
+    card.appendChild(readBtn);
+    readBtn.classList.add("read-btn");
+    readBtn.addEventListener("click", () => {
+      if (read.textContent === "Read: false") {
+        read.textContent = "Read: true";
+      } else {
+        read.textContent = "Read: false";
+      }
+    });
 
+    //remove btn
     let removeBtn = document.createElement("button");
     removeBtn.textContent = "Remove";
     card.appendChild(removeBtn);
+    removeBtn.classList.add("btn-remove");
     removeBtn.addEventListener("click", () => {
       library.splice(book.index, 1); // we delete the element (book) at its index
       displayBooks(); // we update the display of the books so now the deleted book isn't shown
@@ -95,5 +108,7 @@ function displayBooks() {
         return true;
       });
     });
+
+    cardsContainer.appendChild(card);
   });
 }
