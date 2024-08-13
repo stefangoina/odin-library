@@ -82,5 +82,18 @@ function displayBooks() {
     card.appendChild(read);
 
     cardsContainer.appendChild(card);
+
+    let removeBtn = document.createElement("button");
+    removeBtn.textContent = "Remove";
+    card.appendChild(removeBtn);
+    removeBtn.addEventListener("click", () => {
+      library.splice(book.index, 1); // we delete the element (book) at its index
+      displayBooks(); // we update the display of the books so now the deleted book isn't shown
+      library = library.filter((book, index) => {
+        // we update the indexes of the remaining books, because we had a problem where we deleted a book then created another one and it wouldn't delete
+        book.index = index;
+        return true;
+      });
+    });
   });
 }
